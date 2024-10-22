@@ -1,0 +1,59 @@
+
+.parent {
+  width: 700px;
+  height: 700px;
+  background-color: grey;
+  position: relative;
+
+  .child {
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin bg-properties($w:300px, $h:300px, $bg-color:green) {
+  width: $w;
+  height: $h;
+  background-color: $bg-color;
+}
+
+.container {
+  .parent {
+    @include bg-properties(100%, 700px, grey);
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .child {
+      @include bg-properties();
+      margin: 10px;
+    }
+  }
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  li {
+    margin: 15px;
+    text-transform: uppercase;
+  }
+}
+
+.header {
+  background-image: url('/images/header.png');
+  height: 300px;
+}
